@@ -4,7 +4,7 @@ class Enlaces{
 
     public static function EnlacePaginas($url){
 
-        if($url=="inicio" || $url=="login" || $url=="sedes"){
+        if($url=="inicio" || $url=="login" || $url=="sedes" || $url=="registrar"){
             
 			$module = "view/modulos/" . $url . ".php";
 

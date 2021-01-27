@@ -74,5 +74,59 @@ class Controlador{
 
 		}
 	}
+	public function eliminarUsuario($rut, $pass){
+		$db_data= require_once 'config/db-cfg.php';
+		$conn = new mysqli($db_data['host'], $db_data['user'], $db_data['pass'], $db_data['database']);
+		if($conn){
+			
+			try {
+				$query = printf("DELETE FROM `usuarios` WHERE `rut` === `%d` && `pass` === `%d`;", $rut, $pas);
+				mysqli_query($conn, $query);
+			} catch (Exception $err) {
+				echo $err;
+			}
+			
+			
+		}else{
+			echo "<h1>CONEXION RECHAZADA</h1>";
+
+		}
+	}
+	public function actualizarPassUsuario($rut, $pass){
+		$db_data= require_once 'config/db-cfg.php';
+		$conn = new mysqli($db_data['host'], $db_data['user'], $db_data['pass'], $db_data['database']);
+		if($conn){
+			
+			try {
+				$query = printf("UPDATE `usuarios` SET `pass`='%d' WHERE `rut` = '%d'", $pass, $rut);
+				mysqli_query($conn, $query);
+			} catch (Exception $err) {
+				echo $err;
+			}
+			
+			
+		}else{
+			echo "<h1>CONEXION RECHAZADA</h1>";
+
+		}
+	}
+	public function mostrarUsuario($rut){
+		$db_data= require_once 'config/db-cfg.php';
+		$conn = new mysqli($db_data['host'], $db_data['user'], $db_data['pass'], $db_data['database']);
+		if($conn){
+			
+			try {
+				$query = printf("SELECT `id`, `rut`, `privilegio` FROM `usuarios` WHERE `rut` = %d;", $rut);
+				mysqli_query($conn, $query);
+			} catch (Exception $err) {
+				echo $err;
+			}
+			
+			
+		}else{
+			echo "<h1>CONEXION RECHAZADA</h1>";
+
+		}
+	}
 }
 ?>
